@@ -6,6 +6,7 @@
 	],
 	"settings": {
 		"workbench.iconTheme": "material-icon-theme",
-		"window.autoDetectColorScheme": false
+		"window.autoDetectColorScheme": false,
+		"editor.fontSize": 16
 	}
 }
