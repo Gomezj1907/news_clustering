@@ -4,5 +4,8 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"workbench.iconTheme": "material-icon-theme",
+		"window.autoDetectColorScheme": false
+	}
 }
