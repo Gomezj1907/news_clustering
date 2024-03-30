@@ -1,6 +1,2 @@
 #error
-
-"""_summary_    
-
-    
-    """
+print("hello world!")
