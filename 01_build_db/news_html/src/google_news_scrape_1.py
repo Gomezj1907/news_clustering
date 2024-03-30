@@ -25,3 +25,5 @@ for a_tag in articulos:
     
     
 len(articulos)
+
+driver.quit()
