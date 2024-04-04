@@ -1,6 +1,6 @@
 #==============#
 #== Jorge Gomez
-#== Editado: 29/03/2024
+#== Editado: 3/04/2024
 
 # importo los modulos
 from selenium import webdriver
