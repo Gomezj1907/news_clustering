@@ -1,11 +1,14 @@
 #==============#
 #== Jorge Gomez
-#== Editado: 3/04/2024
+#== Editado: 29/03/2024
 
 # importo los modulos
 from selenium import webdriver
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
-
+import time 
 #setup webdriver
 
 driver = webdriver.Chrome()
@@ -15,32 +18,30 @@ driver = webdriver.Chrome()
 url = 'https://news.google.com/topics/CAAqLAgKIiZDQkFTRmdvSUwyMHZNRFZxYUdjU0JtVnpMVFF4T1JvQ1EwOG9BQVAB?hl=es-419&gl=CO&ceid=CO%3Aes-419'
 
 driver.get(url)
+wait = WebDriverWait(driver, 10)
+time.sleep(2)
 
 articulos = driver.find_elements('xpath', '//a[@tabindex="0"]')
-
 len(articulos)
 
 news_links = []
 
-for a_tag in articulos:
-    
-    print(a_tag.get_attribute('href'), a_tag.text)
-    
-    new_url = a_tag.get_attribute('href')
+for i in range(len(articulos)):
+    new_url = articulos[i].get_attribute('href')  # Use 'i' instead of 1
+    print(new_url)
     
     driver.execute_script("window.open('');")
-    driver.switch_to(driver.current_window_handles[1])
-    
+    wait.until(EC.number_of_windows_to_be(2))
+    driver.switch_to.window(driver.window_handles[1])  # Fixed method usage
     driver.get(new_url)
+    time.sleep(2)
+    
     link = driver.current_url
     news_links.append(link)
+    print(len(news_links))
     
     driver.close() 
     driver.switch_to.window(driver.window_handles[0]) 
-    
-    
-
-
-    
-
+   
 driver.quit()
+
