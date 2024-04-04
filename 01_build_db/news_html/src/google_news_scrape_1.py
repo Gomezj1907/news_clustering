@@ -34,8 +34,7 @@ for i in range(len(articulos)):
     wait.until(EC.number_of_windows_to_be(2))
     driver.switch_to.window(driver.window_handles[1])  # Fixed method usage
     driver.get(new_url)
-    time.sleep(2)
-    
+    time.sleep(1)
     link = driver.current_url
     news_links.append(link)
     print(len(news_links))
