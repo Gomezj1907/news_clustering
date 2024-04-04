@@ -18,12 +18,29 @@ driver.get(url)
 
 articulos = driver.find_elements('xpath', '//a[@tabindex="0"]')
 
-driver.execute_script()
+len(articulos)
+
+news_links = []
 
 for a_tag in articulos:
+    
     print(a_tag.get_attribute('href'), a_tag.text)
     
+    new_url = a_tag.get_attribute('href')
     
-len(articulos)
+    driver.execute_script("window.open('');")
+    driver.switch_to(driver.current_window_handles[1])
+    
+    driver.get(new_url)
+    link = driver.current_url
+    news_links.append(link)
+    
+    driver.close() 
+    driver.switch_to.window(driver.window_handles[0]) 
+    
+    
+
+
+    
 
 driver.quit()
