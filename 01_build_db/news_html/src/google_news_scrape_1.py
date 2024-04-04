@@ -19,7 +19,7 @@ url = 'https://news.google.com/topics/CAAqLAgKIiZDQkFTRmdvSUwyMHZNRFZxYUdjU0JtVn
 
 driver.get(url)
 wait = WebDriverWait(driver, 10)
-time.sleep(2)
+time.sleep(3)
 
 articulos = driver.find_elements('xpath', '//a[@tabindex="0"]')
 len(articulos)
@@ -27,14 +27,16 @@ len(articulos)
 news_links = []
 
 for i in range(len(articulos)):
-    new_url = articulos[i].get_attribute('href')  # Use 'i' instead of 1
+    new_url = articulos[i].get_attribute('href') 
     print(new_url)
     
     driver.execute_script("window.open('');")
     wait.until(EC.number_of_windows_to_be(2))
-    driver.switch_to.window(driver.window_handles[1])  # Fixed method usage
+    driver.switch_to.window(driver.window_handles[1]) 
     driver.get(new_url)
+    
     time.sleep(1)
+    
     link = driver.current_url
     news_links.append(link)
     print(len(news_links))
